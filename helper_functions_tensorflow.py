@@ -286,3 +286,12 @@ def calculate_results(y_true, y_pred):
                   "recall": model_recall,
                   "f1": model_f1}
   return model_results
+
+# define the EarlyStopping callback
+early_stopping_callback = tf.keras.callbacks.EarlyStopping(
+    monitor='accuracy', # monitor validation loss
+    min_delta=0.001, # minimum change in the metric to be considered an improvement
+    patience=5, # number of epochs to wait before stopping training
+    mode='min', # minimize the monitored metric
+    verbose=1 # print a message when training is stopped
+)
